@@ -31,7 +31,7 @@ oc project microservicios-spring-boot-postgresql
 
 **Paso 4:** Exponga la base de datos como un servicio mediante el comando:
 
-```
+```shell
 oc expose service <nombre_servicio>
 oc expose service postgresql
 ```
