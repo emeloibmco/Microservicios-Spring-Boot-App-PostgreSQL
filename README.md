@@ -22,8 +22,20 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 *   **PostgreSQL Connection Username:** admin
 *   **PostgreSQL Connection Password:** sasa
 
-**Paso 3: ...**
+**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell) Ejecute el comando mostrado a continuación para ingresar al proyecto creado.
 
-**Paso 4:** Ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. Modifique la variable **spring.datasource.url** de la siguiente forma: **spring.datasource.url=jdbc:postgresql://\<IP\_Servicio>:54593/db\_microservices\_app** y guarde los cambios.
+```shell
+oc project <nombre_proyecto>
+oc project microservicios-spring-boot-postgresql
+```
+
+**Paso 4:** Exponga la base de datos como un servicio mediante el comando:
+
+```
+oc expose service <nombre_servicio>
+oc expose service postgresql
+```
+
+**Paso 5:** Ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. Modifique la variable **spring.datasource.url** de la siguiente forma: **spring.datasource.url=jdbc:postgresql://\<IP\_Servicio>:54593/db\_microservices\_app** y guarde los cambios.
 
 ## **Despliegue de Eureka**
