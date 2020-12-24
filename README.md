@@ -12,7 +12,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ![](https://user-images.githubusercontent.com/60897075/103092116-35981d00-45c4-11eb-9710-e78ebcc434e9.gif)
 
-## Despliegue de base de datos PostgreSQL
+## Despliegue de la base de datos PostgreSQL
 
 **Paso 1:** Haga clic en **+Add** y luego elija la opción **Database.** En el menú de la izquierda puede filtrar dependiendo de la base de datos que necesite, en este caso seleccione el filtro **Postgres,** elija la primera opción **PostgreSQL** y haga clic en **Instantiate Template.**
 
@@ -21,3 +21,9 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 *   **Database Service Name:** db\_microservices\_app
 *   **PostgreSQL Connection Username:** admin
 *   **PostgreSQL Connection Password:** sasa
+
+**Paso 3: ...**
+
+**Paso 4:** Ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. Modifique la variable **spring.datasource.url** de la siguiente forma: **spring.datasource.url=jdbc:postgresql://\<IP\_Servicio>:54593/db\_microservices\_app** y guarde los cambios.
+
+## **Despliegue de Eureka**
