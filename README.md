@@ -59,6 +59,6 @@ cd BackEnd/<nombre_microservicio>/src/main/resources/application.properties
 spring.datasource.url=jdbc:postgresql://<IP_Servicio>:54593/db_microservices_app 
 ```
 
-## **Despliegue de Eureka**
-
 ![](https://user-images.githubusercontent.com/60897075/103159233-f7058c80-4794-11eb-91be-02322a3e39dd.gif)
+
+## **Despliegue de Eureka**
