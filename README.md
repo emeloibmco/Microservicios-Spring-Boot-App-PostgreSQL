@@ -20,7 +20,9 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 *   **Database Service Name:** db\_microservices\_app
 *   **PostgreSQL Connection Username:** admin
-*   **PostgreSQL Connection Password:** sasa
+*   **PostgreSQL Connection Password:** \*\*\*\*
+
+![](https://user-images.githubusercontent.com/60897075/103158986-f61f2b80-4791-11eb-9e32-ff73de7c2fd3.gif)
 
 **Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell) Ejecute el comando mostrado a continuación para ingresar al proyecto creado.
 
@@ -36,6 +38,27 @@ oc expose service <nombre_servicio>
 oc expose service postgresql
 ```
 
-**Paso 5:** Ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. Modifique la variable **spring.datasource.url** de la siguiente forma: **spring.datasource.url=jdbc:postgresql://\<IP\_Servicio>:54593/db\_microservices\_app** y guarde los cambios.
+**Paso 5:** Obtenga la IP y el puerto en la cual fue expuesto el servicio, guárdela como \<IP\_Servicio>:
+
+```shell
+oc get svc
+```
+
+![](https://user-images.githubusercontent.com/60897075/103159159-e7397880-4793-11eb-81b8-236b8c194053.gif)
+
+**Paso 6:** Clone el repositorio e ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. 
+
+```shell
+git clone https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL.git
+cd BackEnd/<nombre_microservicio>/src/main/resources/application.properties 
+```
+
+**Paso 7:** Modifique la variable **spring.datasource.url** de la siguiente forma y guarde los cambios.
+
+```
+spring.datasource.url=jdbc:postgresql://<IP_Servicio>:54593/db_microservices_app 
+```
 
 ## **Despliegue de Eureka**
+
+![](https://user-images.githubusercontent.com/60897075/103159233-f7058c80-4794-11eb-91be-02322a3e39dd.gif)
