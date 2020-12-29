@@ -71,7 +71,6 @@ El servidor Eureka almacenará la información de todos los microservicios regis
 odo catalog list components
 ```
 
-  
 **Paso 2:** Ubíquese en la carpeta correspondiente al microservicio **microservicios-eureka** y ejecute el siguiente comando, teniendo en cuenta que java es el componente de la lista vista en el paso anterior que se ajusta a la aplicación que va a ser desplegada.
 
 ```shell
@@ -87,7 +86,23 @@ vim config.yaml
 
 **Paso 4:** En el archivo **config.yaml** encontrará una sección de puertos, modifíquela para que el servicio de eureka se exponga únicamente por el **puerto 8761**, para esto elimine los puertos por defecto y agregue el 8761. la sección de puertos deberá quedar así:
 
-```
+```shell
 Ports:
 - 8761/TCP 
 ```
+
+**Paso 5:** Para verificar que el paso 4 se haya ejecutado de manera exitosa puede volver a la carpeta raiz **microservicios-eureka** y correr el comando:
+
+```shell
+odo config view
+```
+
+**Paso 6:** Suba la aplicación.
+
+```shell
+odo push
+```
+
+![](https://user-images.githubusercontent.com/60897075/103291795-8b9d0400-49ba-11eb-9cf5-c2b11a29179f.gif)
+
+## Despliegue de los microservicios: Empresa-Persona-Transacciones
