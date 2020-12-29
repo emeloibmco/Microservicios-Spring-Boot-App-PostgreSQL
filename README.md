@@ -4,6 +4,15 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ![](https://user-images.githubusercontent.com/60897075/103002680-4f226180-44fd-11eb-974e-9ddad416156d.png)
 
+### Contenido
+
+1.  [Crear un proyecto.](#crear-un-proyecto)
+2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
+3.  [Despliegue de Eureka.](#despliegue-de-eureka)
+4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
+5.  [Referencias.](#referencias)
+6.  [Autores.](#autores)
+
 ## Crear un proyecto
 
 **Paso 1:** En la sección **clústeres** de la lista de recursos ingrese al suyo y de clic en el botón **Consola web de OpenShift.** Una vez se encuentre en la consola fíjese que se encuentre como **Developer** y no como **Administrator.**
@@ -156,3 +165,13 @@ Ports:
 ```shell
 odo push
 ```
+
+![](https://user-images.githubusercontent.com/60897075/103298640-c5750700-49c8-11eb-957f-436d7d0fe644.gif)
+
+## Referencias
+
+La documentación sobre odo puede encontrarla en la página de [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_developer_cli/understanding-odo.html).
+
+## Autores
+
+IBM Cloud Tech Sales :cloud:
