@@ -111,11 +111,11 @@ oc get all
 
 ![](https://user-images.githubusercontent.com/60897075/103291795-8b9d0400-49ba-11eb-9cf5-c2b11a29179f.gif)
 
-## Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul
+## Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions
 
-Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** y finalmente en **microservicios-zuul.**
+Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul** y finalmente **Commons-Transactions.**
 
-**Paso 1:** Ingrese al archivo **application.properties** y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía.
+**Paso 1:** Ingrese al archivo **application.properties** y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
 
 ```shell
 vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
@@ -123,4 +123,36 @@ vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
 
 ```
 eureka.client.service-url.defaultZone=http://<IP_eureka>:8761/eureka
+```
+
+**Paso 2:** En la carpeta raíz del microservicio ejecute el siguiente comando:
+
+```shell
+odo create java <nombre_microservicio>
+```
+
+**Paso 3:** El paso anterior creará la carpeta oculta **odo** con el archivo **config.yaml** dentro de ella, abra el archivo mediante vim o el editor de su preferencia.
+
+```shell
+cd .odo/
+vim config.yaml
+```
+
+**Paso 4:** En el archivo **config.yaml** encontrará una sección de puertos, modifíquela para que el microservicio se exponga por un único puerto según la siguiente lista:
+
+*   microservicios-empresa: 8890
+*   microservicios-persona: 8060
+*   microservicios-transacciones: 8020
+*   microservicios-zuul: 8090
+*   commons-transactions: 8443
+
+```shell
+Ports:
+- 8761/TCP 
+```
+
+**Paso 5:** Suba el microservicio.
+
+```shell
+odo push
 ```
