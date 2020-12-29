@@ -50,7 +50,7 @@ oc get svc
 
 ```shell
 git clone https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL.git
-cd BackEnd/<nombre_microservicio>/src/main/resources/application.properties 
+vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties 
 ```
 
 **Paso 7:** Modifique la variable **spring.datasource.url** de la siguiente forma y guarde los cambios.
@@ -103,6 +103,24 @@ odo config view
 odo push
 ```
 
+**Paso 7:** Liste todos los servicios y despliegues en su clúster y anote la IP y el puerto del servicio de eureka.
+
+```shell
+oc get all
+```
+
 ![](https://user-images.githubusercontent.com/60897075/103291795-8b9d0400-49ba-11eb-9cf5-c2b11a29179f.gif)
 
-## Despliegue de los microservicios: Empresa-Persona-Transacciones
+## Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul
+
+Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** y finalmente en **microservicios-zuul.**
+
+**Paso 1:** Ingrese al archivo **application.properties** y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía.
+
+```shell
+vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
+```
+
+```
+eureka.client.service-url.defaultZone=http://<IP_eureka>:8761/eureka
+```
