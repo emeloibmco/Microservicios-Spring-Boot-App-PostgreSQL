@@ -1,0 +1,11 @@
+kind: LocalConfig
+apiversion: odo.dev/v1alpha1
+ComponentSettings:
+  Type: java
+  SourceLocation: ./
+  SourceType: local
+  Ports:
+  - 65234/TCP
+  Application: app
+  Project: pagos-pg-projecy
+  Name: persona-service
