@@ -10,7 +10,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
 3.  [Despliegue de Eureka.](#despliegue-de-eureka)
 4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
-5.  [Despliegue FrontEnd](#Despliegue-FronEnd)
+5.  [Despliegue FrontEnd](#despliegue-fronend)
 6.  [Referencias.](#referencias)
 7.  [Autores.](#autores)
 
