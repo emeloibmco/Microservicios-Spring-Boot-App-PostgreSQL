@@ -11,7 +11,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 3.  [Despliegue de Eureka.](#despliegue-de-eureka)
 4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
 5.  [Despliegue FrontEnd.](#despliegue-frontend)
-6.  [Prueba de funcionamiento](#prueba-de-funcionamiento)
+6.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
 7.  [Referencias.](#referencias)
 8.  [Autores.](#autores)
 
@@ -192,6 +192,14 @@ Para mayor información puede consultar <a href="https://developers.redhat.com/b
 
 
 ## Prueba de funcionamiento
+Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
+
+**Paso 1:** Entre al clúster de OpenShift y abra la **Consola web de OpenShift**.
+**Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
+**Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
+<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Open%20URL.gif"></p>
+
+**Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación, de forma similar a como se muestra en la siguiente imagen:
 
 
 ## Referencias
