@@ -11,8 +11,9 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 3.  [Despliegue de Eureka.](#despliegue-de-eureka)
 4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
 5.  [Despliegue FrontEnd.](#despliegue-frontend)
-6.  [Referencias.](#referencias)
-7.  [Autores.](#autores)
+6.  [Prueba de funcionamiento](#prueba-de-funcionamiento)
+7.  [Referencias.](#referencias)
+8.  [Autores.](#autores)
 
 ## Crear un proyecto
 
@@ -188,6 +189,10 @@ Implementar la aplicación en OpenShift. Para ello ejecute el siguiente comando:
 npx nodeshift --strictSSL=false --dockerImage=nodeshift/ubi8-s2i-web-app --imageTag=10.x --build.env YARN_ENABLED=true  --expose
 ```
 Para mayor información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
+
+
+## Prueba de funcionamiento
+
 
 ## Referencias
 
