@@ -10,8 +10,9 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
 3.  [Despliegue de Eureka.](#despliegue-de-eureka)
 4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
-5.  [Referencias.](#referencias)
-6.  [Autores.](#autores)
+5.  [Despliegue FrontEnd](#Despliegue-FronEnd)
+6.  [Referencias.](#referencias)
+7.  [Autores.](#autores)
 
 ## Crear un proyecto
 
@@ -167,6 +168,9 @@ odo push
 ```
 
 ![](https://user-images.githubusercontent.com/60897075/103298640-c5750700-49c8-11eb-957f-436d7d0fe644.gif)
+
+## Despliegue FrontEnd
+
 
 ## Referencias
 
