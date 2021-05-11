@@ -195,7 +195,9 @@ Para mayor información puede consultar <a href="https://developers.redhat.com/b
 Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 
 **Paso 1:** Entre al clúster de OpenShift y abra la **Consola web de OpenShift**.
+
 **Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
+
 **Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
 <p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Open%20URL.gif"></p>
 
