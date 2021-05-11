@@ -201,8 +201,8 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 **Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
 <p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Open%20URL.gif"></p>
 
-**Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación, de forma similar a como se muestra en la siguiente imagen:
-
+**Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación de forma similar a como se muestra en la siguiente imagen:
+<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Aplicacion-microservicios.gif"></p>
 
 ## Referencias
 
