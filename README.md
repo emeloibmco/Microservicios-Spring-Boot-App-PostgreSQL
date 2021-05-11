@@ -173,7 +173,7 @@ odo push
 Para realizar el despliegue del FrontEnd de la aplicación, siga los pasos que se muestran a continuación:
 
 **Paso 1:** 
-Diríjase a la carpeta de FrontEnd, mediante el comando:
+Diríjase a la carpeta FrontEnd, mediante el comando:
 ```
 cd FrontEnd
 ```
@@ -187,7 +187,7 @@ Implementar la aplicación en OpenShift. Para ello ejecute el siguiente comando:
 ```
 npx nodeshift --strictSSL=false --dockerImage=nodeshift/ubi8-s2i-web-app --imageTag=10.x --build.env YARN_ENABLED=true  --expose
 ```
-Para mayro información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
+Para mayor información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
 
 ## Referencias
 
