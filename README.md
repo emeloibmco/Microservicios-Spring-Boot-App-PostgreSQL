@@ -170,7 +170,24 @@ odo push
 ![](https://user-images.githubusercontent.com/60897075/103298640-c5750700-49c8-11eb-957f-436d7d0fe644.gif)
 
 ## Despliegue FrontEnd
+Para realizar el despliegue del FrontEnd de la aplicación, siga los pasos que se muestran a continuación:
 
+**Paso 1:** 
+Diríjase a la carpeta de FrontEnd, mediante el comando:
+```
+cd FrontEnd
+```
+>**Nota:** Recuerde que se debe encontrar dentro de la carpeta **Microservicios-Spring-Boot-App-PostgreSQL**. Si aún se encuentra dentro de la carpeta **BackEnd** puede salir mediante el comando:
+```
+cd ..
+```
+
+**Paso 2:**
+Implementar la aplicación en OpenShift. Para ello ejecute el siguiente comando:
+```
+npx nodeshift --strictSSL=false --dockerImage=nodeshift/ubi8-s2i-web-app --imageTag=10.x --build.env YARN_ENABLED=true  --expose
+```
+Para mayro información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
 
 ## Referencias
 
