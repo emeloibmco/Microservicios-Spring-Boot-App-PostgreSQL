@@ -35,7 +35,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ![](https://user-images.githubusercontent.com/60897075/103158986-f61f2b80-4791-11eb-9e32-ff73de7c2fd3.gif)
 
-**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell) Ejecute el comando mostrado a continuación para ingresar al proyecto creado.
+**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). Inicie sesión en el cluster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha. Luego ejecute el comando mostrado a continuación para ingresar al proyecto creado.
 
 ```shell
 oc project <nombre_proyecto>
