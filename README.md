@@ -117,6 +117,8 @@ Ports:
 - 8761/TCP 
 ```
 
+*Puede realizar la edición en el editor vim usando el comando ```i``` y guardar los cambios realizados con el comando ```:wq```*
+
 **Paso 5:** Para verificar que el paso 4 se haya ejecutado de manera exitosa puede volver a la carpeta raiz **microservicios-eureka** y correr el comando:
 
 ```shell
