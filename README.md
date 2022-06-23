@@ -17,7 +17,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ## Crear un proyecto
 
-**Paso 1:** En la sección **clústeres** de la lista de recursos ingrese al suyo y de clic en el botón **Consola web de OpenShift.** Una vez se encuentre en la consola fíjese que se encuentre como **Developer** y no como **Administrator.**
+**Paso 1:** En la sección **clústeres** de la lista de recursos ingrese al suyo y dé clic en el botón **Consola web de OpenShift.** Una vez se encuentre en la consola fíjese que se encuentre como **Developer** y no como **Administrator.**
 
 **Paso 2:** Cree un nuevo proyecto abriendo el menú desplegable de **Project** y luego de clic en **Create Project.** Proporcione un nombre relacionado con la aplicación y haga clic en **Crear.**
 
@@ -29,16 +29,23 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 **Paso 2:** En las variables requeridas puede dejar los valores por defecto, sin embargo es importante que modifique 3 variables con los valores mostrados en la lista a continuación. Tenga en cuenta que estos valores se configuran en el código de la aplicación y en caso de querer modificarlos puede hacerlo desde el archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones.
 
-*   **Database Service Name:** db\_microservices\_app
-*   **PostgreSQL Connection Username:** admin
-*   **PostgreSQL Connection Password:** \*\*\*\*
+*   **Database Service Name:** postgresql
+*   **PostgreSQL Connection Username:** postgresadmin
+*   **PostgreSQL Connection Password:** Passw0rd2020
 
 ![](https://user-images.githubusercontent.com/60897075/103158986-f61f2b80-4791-11eb-9e32-ff73de7c2fd3.gif)
 
-**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). Inicie sesión en el cluster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha. Luego ejecute el comando mostrado a continuación para ingresar al proyecto creado.
+**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). 
+
+Inicie sesión en el cluster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha.
+
+Ingrese al proyecto que creó con el siguiente comando:
 
 ```shell
 oc project <nombre_proyecto>
+```
+Por ejemplo:
+```
 oc project microservicios-spring-boot-postgresql
 ```
 
@@ -46,6 +53,9 @@ oc project microservicios-spring-boot-postgresql
 
 ```shell
 oc expose service <nombre_servicio>
+```
+En este caso:
+```
 oc expose service postgresql
 ```
 
@@ -61,6 +71,9 @@ oc get svc
 
 ```shell
 git clone https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL.git
+```
+Para editar los archivos puede realizarlo desde el editor que desee o desde la consola, con el siguiente comando:
+```
 vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties 
 ```
 
@@ -92,6 +105,8 @@ odo create java eureka-service
 
 ```shell
 cd .odo/
+```
+```
 vim config.yaml
 ```
 
