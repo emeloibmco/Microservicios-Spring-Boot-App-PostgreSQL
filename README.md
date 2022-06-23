@@ -1,4 +1,4 @@
-# Microservicios Spring Boot App PostgreSQL
+# Microservicios Spring Boot App PostgreSQL :desktop_computer:
 
 En la presente guía encontrará el paso a paso y las herramientas necesarias para el despliegue en un clúster de Red Hat OpenShift de una aplicación de transacciones bancarias, que fue desarrollada siguiendo la arquitectura de microservicios y que podrá obtener al clonar el presente repositorio.
 
@@ -143,7 +143,7 @@ oc get all
 
 Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul** y finalmente **Commons-Transactions.**
 
-**Paso 1:** Ingrese al archivo **application.properties** y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
+**Paso 1:** Ingrese al archivo **application.properties** que se encuentra en la dirección **/src/main/resources/** de cada microservicio y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
 
 ```shell
 vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
@@ -163,6 +163,8 @@ odo create java <nombre_microservicio>
 
 ```shell
 cd .odo/
+```
+```
 vim config.yaml
 ```
 
@@ -179,7 +181,7 @@ Ports:
 - 8761/TCP 
 ```
 
-**Paso 5:** Suba el microservicio.
+**Paso 5:** Regrese una carpeta con el comando ```cd ..``` y suba el microservicio:
 
 ```shell
 odo push
