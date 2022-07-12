@@ -6,7 +6,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ### Contenido
 
-1.  [Crear un proyecto.](#crear-un-proyecto)
+1.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
 2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
 3.  [Despliegue de Eureka.](#despliegue-de-eureka)
 4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
@@ -15,7 +15,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 7.  [Referencias.](#referencias)
 8.  [Autores.](#autores)
 
-## Crear un proyecto
+## Crear un proyecto :page_facing_up:
 
 **Paso 1:** En la sección **clústeres** de la lista de recursos ingrese al suyo y dé clic en el botón **Consola web de OpenShift.** Una vez se encuentre en la consola fíjese que se encuentre como **Developer** y no como **Administrator.**
 
@@ -143,7 +143,7 @@ oc get all
 
 Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul** y finalmente **Commons-Transactions.**
 
-**Paso 1:** Ingrese al archivo **application.properties** que se encuentra en la dirección **/src/main/resources/** de cada microservicio y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **localhost** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
+**Paso 1:** Ingrese al archivo **application.properties** que se encuentra en la dirección **/src/main/resources/** de cada microservicio y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **IP_eureka** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
 
 ```shell
 vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
