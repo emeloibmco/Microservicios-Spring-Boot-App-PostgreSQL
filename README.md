@@ -209,6 +209,26 @@ npx nodeshift --strictSSL=false --dockerImage=nodeshift/ubi8-s2i-web-app --image
 ```
 Para mayor información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
 
+Si los pasos anteriores no funcionaron puede usar el siguiente metodo para desplegar el frontend:
+
+**Paso 1:**
+Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer** y diríjase a la pestaña de *+add* y luego ingrese al apartado de **Container images**.
+
+
+**Paso 2:**
+
+Seleccione la opción de *Image name form external registry* y en el campo de texto pegue la siguiente URL:
+
+```
+sebas1411/front-roks:v1
+```
+
+Cambie el *runtime icon* si lo desea o puede usar tambien el default. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*. Click en el botón *Create* y el despliegue empezará de manera automática.
+
+**Nota:** Las opciones de configuración que no se mencionan en este apartado no necesitan ser modificadas.
+
+
+
 
 ## Prueba de funcionamiento
 Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
