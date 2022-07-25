@@ -227,7 +227,7 @@ sebas1411/front-roks:v1
 ![deploy2](https://user-images.githubusercontent.com/53380760/180847852-97a70416-10db-4821-9031-4cc33c41a374.png)
 
 
-Cambie el *runtime icon* si lo desea o puede usar tambien el default. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*. Click en el botón *Create* y el despliegue empezará de manera automática.
+Cambie el *runtime icon* por el de node.js. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*. Click en el botón *Create* y el despliegue empezará de manera automática.
 
 ![deploy3](https://user-images.githubusercontent.com/53380760/180847886-493f3fae-f143-4c82-8e10-7b6d57b1d50a.png)
 
