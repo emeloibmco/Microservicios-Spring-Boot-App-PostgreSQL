@@ -214,6 +214,7 @@ Si los pasos anteriores no funcionaron puede usar el siguiente metodo para despl
 **Paso 1:**
 Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer** y diríjase a la pestaña de *+add* y luego ingrese al apartado de **Container images**.
 
+![deploy1](https://user-images.githubusercontent.com/53380760/180847794-21fd24c3-6ad1-411d-9fba-f679c734ef25.png)
 
 **Paso 2:**
 
@@ -223,11 +224,15 @@ Seleccione la opción de *Image name form external registry* y en el campo de te
 sebas1411/front-roks:v1
 ```
 
+![deploy2](https://user-images.githubusercontent.com/53380760/180847852-97a70416-10db-4821-9031-4cc33c41a374.png)
+
+
 Cambie el *runtime icon* si lo desea o puede usar tambien el default. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*. Click en el botón *Create* y el despliegue empezará de manera automática.
 
+![deploy3](https://user-images.githubusercontent.com/53380760/180847886-493f3fae-f143-4c82-8e10-7b6d57b1d50a.png)
+
+
 **Nota:** Las opciones de configuración que no se mencionan en este apartado no necesitan ser modificadas.
-
-
 
 
 ## Prueba de funcionamiento
