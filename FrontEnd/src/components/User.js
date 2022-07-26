@@ -16,7 +16,7 @@ const transaccion={
 
 const options =[
   { value: "CC", label: "Cédula de ciudadanía" },
-  { value: "CE", label: "Cédula de extrangería" },
+  { value: "CE", label: "Cédula de extranjería" },
   { value: "NIT", label: "NIT" },
   { value: "Pasaporte", label: "Pasaporte" },
   { value: "TI", label: "Tarjeta de identidad" }
@@ -73,7 +73,7 @@ const User = () => {
 
         <section>
           <label>Tipo de documento</label>
-          <Controller as={ReactSelect} options={options} name="tipoDoc" isClearable control={control} />
+          <Controller as={ReactSelect} options={options} name="tipoDoc" className="input" isClearable control={control} />
         </section>
         
         <section>
