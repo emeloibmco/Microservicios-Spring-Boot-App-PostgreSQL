@@ -218,7 +218,7 @@ Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer
 
 **Paso 2:**
 
-Seleccione la opción de *Image name form external registry* y en el campo de texto pegue la siguiente URL:
+Seleccione la opción de *Image name from external registry* y en el campo de texto pegue la siguiente URL:
 
 ```
 sebas1411/front-roks:v1
