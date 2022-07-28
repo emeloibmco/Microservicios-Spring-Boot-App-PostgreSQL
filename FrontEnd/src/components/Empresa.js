@@ -56,7 +56,7 @@ export default function Empresa() {
           <div >
             <Grid container spacing={2}>
               <Grid item xs={6} md={3}>
-                <div className="div1">
+                <div className="div1" >
                   <List >
                     <ListItem>
                       <ListItemText

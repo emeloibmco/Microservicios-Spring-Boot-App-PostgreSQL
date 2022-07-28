@@ -14,7 +14,7 @@ const transaccion={
   empresa:{}
 }
 
-const options =[
+const Options =[
   { value: "CC", label: "Cédula de ciudadanía" },
   { value: "CE", label: "Cédula de extranjería" },
   { value: "NIT", label: "NIT" },
@@ -23,8 +23,8 @@ const options =[
 ];
 
 const defaultValues = {
-  nombre: "",
-  correo: "",
+  nombre: "Juan Pérez",
+  correo: "ejemplo@mail.com",
   tipoDoc: { value: "cc", label: "Cédula de ciudadanía" },
   celular: 1234567890,
   idPersona: 1234567890,
@@ -73,7 +73,17 @@ const User = () => {
 
         <section>
           <label>Tipo de documento</label>
-          <Controller as={ReactSelect} options={options} name="tipoDoc" className="input" isClearable control={control} />
+          <Controller 
+            as={ReactSelect} 
+            options={Options} 
+            name="tipoDoc" 
+            className="basic-single" 
+            classNamePrefix="select"
+            isClearable="true"
+            isSearchable="true" 
+            control={control} 
+            />
+
         </section>
         
         <section>
