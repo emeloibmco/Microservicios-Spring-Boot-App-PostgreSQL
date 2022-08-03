@@ -5,7 +5,7 @@ COPY . .
 RUN npm install
 RUN npm run build 
 
-FROM nginx:1.19.8-alpine  
+FROM nginxinc/nginx-unprivileged:stable-alpine
 COPY --from=build-step /app/build /usr/share/nginx/html
 
 
