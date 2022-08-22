@@ -263,13 +263,13 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 **Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
 
 **Paso 3:** Busque en el proyecto en el que esta trabajando y seleccione el recurso **eureka-server** y de click en **Open URL** los microservicios deben estar registrados en el servidor de eureka como en esta imagen:
-![imagen](img/eureka.png)
+![image](img/eureka.png)
 
 **Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
-<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Open%20URL.gif"></p>
+![image](img/front-roks.png)
 
 **Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación de forma similar a como se muestra en la siguiente imagen:
-<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Aplicacion-microservicios.gif"></p>
+![image](img/transac.png)
 
 ## Referencias
 
