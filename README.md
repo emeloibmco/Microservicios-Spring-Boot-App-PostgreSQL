@@ -20,6 +20,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 * Tener una cuenta en IBM Cloud
 * Contar con un clúster de RedHat Openshift
 * Tener instalado [kompose](https://kompose.io/)
+* Tener una cuenta en [Docker Hub](https://hub.docker.com/) :whale:
 
 ## Crear un proyecto :page_facing_up:
 
