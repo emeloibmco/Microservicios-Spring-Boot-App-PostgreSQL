@@ -146,64 +146,9 @@ docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ```
 ![image](img/push.PNG)
 
-
-## **Despliegue de Eureka**
-
-El servidor Eureka almacenará la información de todos los microservicios registrados así como su estado. Para su despliegue se hace uso de [OpenShift Do developer CLI (odo)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_developer_cli/understanding-odo.html) siguiendo los pasos descritos a continuación. 
-
-**Paso 1:** Desde la CLI de IBM Cloud  ejecute el siguiente comando para listar los componentes que son compatibles con odo.
-
-```shell
-odo catalog list components
-```
-
-**Paso 2:** Ubíquese en la carpeta correspondiente al microservicio **microservicios-eureka** y ejecute el siguiente comando, teniendo en cuenta que java es el componente de la lista vista en el paso anterior que se ajusta a la aplicación que va a ser desplegada.
-
-```shell
-odo create java eureka-service
-```
-
-**Paso 3:** El paso anterior creará la carpeta oculta **odo** con el archivo **config.yaml** dentro de ella, abra el archivo mediante vim o el editor de su preferencia.
-
-```shell
-cd .odo/
-```
-```
-vim config.yaml
-```
-
-**Paso 4:** En el archivo **config.yaml** encontrará una sección de puertos, modifíquela para que el servicio de eureka se exponga únicamente por el **puerto 8761**, para esto elimine los puertos por defecto y agregue el 8761. la sección de puertos deberá quedar así:
-
-```shell
-Ports:
-- 8761/TCP 
-```
-
-*Puede realizar la edición en el editor vim usando el comando ```i``` y guardar los cambios realizados con el comando ```:wq```*
-
-**Paso 5:** Para verificar que el paso 4 se haya ejecutado de manera exitosa puede volver a la carpeta raiz **microservicios-eureka** y correr el comando:
-
-```shell
-odo config view
-```
-
-**Paso 6:** Suba la aplicación.
-
-```shell
-odo push
-```
-
-**Paso 7:** Liste todos los servicios y despliegues en su clúster y anote la IP y el puerto del servicio de eureka.
-
-```shell
-oc get all
-```
-
-![](https://user-images.githubusercontent.com/60897075/103291795-8b9d0400-49ba-11eb-9cf5-c2b11a29179f.gif)
-
 ## Despliegue de los microservicios
 
-Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul** y finalmente **Commons-Transactions.**
+Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **eureka-server**,**microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul**.
 
 **Paso 1:** Ingrese al archivo **application.properties** que se encuentra en la dirección **/src/main/resources/** de cada microservicio y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **IP_eureka** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
 
