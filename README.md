@@ -45,7 +45,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 **Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el ícono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). 
 
-Inicie sesión en el clúster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha.
+Inicie sesión en el clúster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha de la consola de OpenShift.
 
 Ingrese al proyecto que creó con el siguiente comando:
 
