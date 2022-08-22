@@ -21,6 +21,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 * Contar con un clúster de RedHat Openshift
 * Tener instalado [kompose](https://kompose.io/)
 * Tener una cuenta en [Docker Hub](https://hub.docker.com/) :whale:
+* Acceso a IBM Cloud CLI a través de IBM Cloud Shell :cloud:
 
 ## Crear un proyecto :page_facing_up:
 
@@ -132,16 +133,24 @@ docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ![image](img/push.PNG)
 
 **Paso 4**
+
 Finalmente, deberá modificar el archivo **docker-compose-deploy.yml** que encontrará en la ruta ```Backend/deploy```.
 Para cada microservicio deberá cambiar la línea
 ```
-image: 
+image: <usuario docker>/backend_eureka-server:<version>
 ```
 
-En las secciones de lo smicroservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
+En las secciones de los microservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
 ```
 spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/postgresql
 ```
+
+Para generar los archivos ```.yml``` con los cuales se realizará el despliegue en openshift se usará la herramienta **kompose**. Asegúrese de estar en la carpeta ```Backend/deploy``` y escriba el siguiente comando:
+```
+kompose --provider openshift --file docker-compose
+```
+
+Este comando creará 3 archivos ```.yml``` por cada microservicio, los cuales corresponden a imagen, deployment y servicio. Estos archivos serán los que se usen en el siguiente paso para realizar el despliegue.
 
 ## Despliegue de los microservicios
 
