@@ -7,10 +7,10 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 ### Contenido
 
 1.  [Pre-requisitos](#Pre-Requisitos-pencil)
-2.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
+2.  [Crear un proyecto](#crear-un-proyecto-pagefacingup)
 3.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
-4.  [Creacion de las imágenes](#creación-de-las-imágenes)
-5.  [Despliegue de los microservicios](#des)
+4.  [Creación de las imágenes](#creación-de-las-imágenes)
+5.  [Despliegue de los microservicios](#despliegue-de-los-microservicios)
 6.  [Despliegue FrontEnd.](#despliegue-frontend)
 7.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
 8.  [Referencias.](#referencias)
@@ -21,6 +21,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 * Contar con un clúster de RedHat Openshift
 * Tener instalado [kompose](https://kompose.io/)
 * Tener una cuenta en [Docker Hub](https://hub.docker.com/) :whale:
+* Acceso a IBM Cloud CLI a través de IBM Cloud Shell :cloud:
 
 ## Crear un proyecto :page_facing_up:
 
@@ -132,66 +133,67 @@ docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ![image](img/push.PNG)
 
 **Paso 4**
+
 Finalmente, deberá modificar el archivo **docker-compose-deploy.yml** que encontrará en la ruta ```Backend/deploy```.
 Para cada microservicio deberá cambiar la línea
 ```
-image: 
+image: <usuario docker>/backend_eureka-server:<version>
 ```
 
-En las secciones de lo smicroservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
+En las secciones de los microservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
 ```
 spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/postgresql
 ```
 
+Para generar los archivos ```.yml``` con los cuales se realizará el despliegue en openshift se usará la herramienta **kompose**. Asegúrese de estar en la carpeta ```Backend/deploy``` y escriba el siguiente comando:
+```
+kompose --provider openshift --file docker-compose
+```
+
+Este comando creará 3 archivos ```.yml``` por cada microservicio, los cuales corresponden a imagen, deployment y servicio. Estos archivos serán los que se usen en el siguiente paso para realizar el despliegue.
+
 ## Despliegue de los microservicios
 
-Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **eureka-server**,**microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul**.
+Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **eureka-server**, luego **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul**.
 
-**Paso 1:** Ingrese al archivo **application.properties** que se encuentra en la dirección **/src/main/resources/** de cada microservicio y en la variable **eureka.client.service-url.defaultZone** reemplace el valor de **IP_eureka** por la ip del servicio de Eureka anotada en la sección anterior de la guía. (Este paso no aplica para commons-transactions)
+**Paso 1**
 
-```shell
-vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties
+Ingrese a su proyecto de OpenShift a través de IBM Cloud Shell. 
+
+**Paso 2**
+
+Ingrese los siguientes comandos, modificando el nombre ```<microservicio>``` según el archivo a subir.
+
+```
+oc apply -f <microservicio>-imagestream.yaml
 ```
 
 ```
-eureka.client.service-url.defaultZone=http://<IP_eureka>:8761/eureka
+oc apply -f <microservicio>-deploymentconfig.yaml
 ```
 
-**Paso 2:** En la carpeta raíz del microservicio ejecute el siguiente comando:
-
-```shell
-odo create java <nombre_microservicio>
+```
+oc apply -f <microservicio>-service.yaml
 ```
 
-**Paso 3:** El paso anterior creará la carpeta oculta **odo** con el archivo **config.yaml** dentro de ella, abra el archivo mediante vim o el editor de su preferencia.
-
-```shell
-cd .odo/
+Verifique que se hayan realizado los despliegues correctamente con el comando
 ```
-```
-vim config.yaml
+oc get svc
 ```
 
-**Paso 4:** En el archivo **config.yaml** encontrará una sección de puertos, modifíquela para que el microservicio se exponga por un único puerto según la siguiente lista:
+**Paso 3**
 
-*   microservicios-empresa: 8890
-*   microservicios-persona: 8060
-*   microservicios-transacciones: 8020
-*   microservicios-zuul: 8090
-*   commons-transactions: 8443
+Finalmente, exponga los microservicios eureka y zuul, con los siguientes comandos:
 
-```shell
-Ports:
-- 8761/TCP 
+```
+oc expose svc eureka-server
 ```
 
-**Paso 5:** Regrese una carpeta con el comando ```cd ..``` y suba el microservicio:
-
-```shell
-odo push
+```
+oc expose svc zuul-server
 ```
 
-![](https://user-images.githubusercontent.com/60897075/103298640-c5750700-49c8-11eb-957f-436d7d0fe644.gif)
+Guarde el endpoint del servicio zuul para usarlo en el despliegue de FrontEnd.
 
 ## Despliegue FrontEnd
 Para realizar el despliegue del FrontEnd de la aplicación, siga los pasos que se muestran a continuación:
