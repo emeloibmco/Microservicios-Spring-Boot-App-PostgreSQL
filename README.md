@@ -6,14 +6,20 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ### Contenido
 
+1.  [Pre-requisitos](#Pre-Requisitos-pencil)
 1.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
 2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
-3.  [Despliegue de Eureka.](#despliegue-de-eureka)
-4.  [Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions.](#despliegue-de-los-microservicios-empresa-persona-transacciones-zuul-commonstransactions)
+3.  [Creacion de las imágenes](#creación-de-las-imágenes)
+4.  [Despliegue de los microservicios](#des)
 5.  [Despliegue FrontEnd.](#despliegue-frontend)
 6.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
 7.  [Referencias.](#referencias)
 8.  [Autores.](#autores)
+
+## Pre-Requisitos :pencil:
+* Tener una cuenta en IBM Cloud
+* Contar con un clúster de RedHat Openshift
+* Tener instalado [kompose](https://kompose.io/)
 
 ## Crear un proyecto :page_facing_up:
 
@@ -85,6 +91,11 @@ spring.datasource.url=jdbc:postgresql://<IP_Servicio>:54593/db_microservices_app
 
 ![](https://user-images.githubusercontent.com/60897075/103159233-f7058c80-4794-11eb-91be-02322a3e39dd.gif)
 
+## **Creación de las imágenes**
+Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas y subirlas a un repositorio de docker.
+
+**Paso 1:** 
+
 ## **Despliegue de Eureka**
 
 El servidor Eureka almacenará la información de todos los microservicios registrados así como su estado. Para su despliegue se hace uso de [OpenShift Do developer CLI (odo)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_developer_cli/understanding-odo.html) siguiendo los pasos descritos a continuación. 
@@ -139,7 +150,7 @@ oc get all
 
 ![](https://user-images.githubusercontent.com/60897075/103291795-8b9d0400-49ba-11eb-9cf5-c2b11a29179f.gif)
 
-## Despliegue de los microservicios: Empresa-Persona-Transacciones-Zuul-CommonsTransactions
+## Despliegue de los microservicios
 
 Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul** y finalmente **Commons-Transactions.**
 
