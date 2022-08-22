@@ -25,13 +25,13 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 **Paso 1:** En la sección **clústeres** de la lista de recursos ingrese al suyo y dé clic en el botón **Consola web de OpenShift.** Una vez se encuentre en la consola fíjese que se encuentre como **Developer** y no como **Administrator.**
 
-**Paso 2:** Cree un nuevo proyecto abriendo el menú desplegable de **Project** y luego de clic en **Create Project.** Proporcione un nombre relacionado con la aplicación y haga clic en **Crear.**
+**Paso 2:** Cree un nuevo proyecto abriendo el menú desplegable de **Project** y luego dé clic en **Create Project.** Proporcione un nombre relacionado con la aplicación y haga clic en **Crear.**
 
 ![](https://user-images.githubusercontent.com/60897075/103092116-35981d00-45c4-11eb-9710-e78ebcc434e9.gif)
 
 ## Despliegue de la base de datos PostgreSQL
 
-**Paso 1:** Haga clic en **+Add** y luego elija la opción **Database.** En el menú de la izquierda puede filtrar dependiendo de la base de datos que necesite, en este caso seleccione el filtro **Postgres,** elija la primera opción **PostgreSQL** y haga clic en **Instantiate Template.**
+**Paso 1:** Haga clic en **+Add** y luego elija la opción **Database.** En el menú de la izquierda puede filtrar dependiendo de la base de datos que necesite, en este caso seleccione el filtro **Postgres**, elija la primera opción **PostgreSQL** y haga clic en **Instantiate Template.**
 
 **Paso 2:** En las variables requeridas puede dejar los valores por defecto, sin embargo es importante que modifique 3 variables con los valores mostrados en la lista a continuación. Tenga en cuenta que estos valores se configuran en el código de la aplicación y en caso de querer modificarlos puede hacerlo desde el archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones.
 
@@ -41,9 +41,9 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 ![](https://user-images.githubusercontent.com/60897075/103158986-f61f2b80-4791-11eb-9e32-ff73de7c2fd3.gif)
 
-**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el icono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). 
+**Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el ícono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). 
 
-Inicie sesión en el cluster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha.
+Inicie sesión en el clúster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha.
 
 Ingrese al proyecto que creó con el siguiente comando:
 
@@ -80,13 +80,13 @@ Con el fin de desplegar los microservicios usando la base de datos desplegada pr
 
 **Paso 1:** 
 
-Muevase a la carpeta **BackEnd/deploy** donde encontrara el archivo dockerfile el cual creara todas las imagenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
+Muevase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
 
 ```
 docker-compose up
 ```
 
-Puede verificar que las imagenes se construyeron usando el siguiente comando 
+Puede verificar que las imágenes se construyeron usando el siguiente comando 
 
 ```
 docker images
@@ -98,7 +98,7 @@ O usando docker desktop:
 
 **Paso 2**
 
-Ahora debera taggear cada imagen para subirlas al repositorio de su elección, en este caso usamos el repositorio docker hub.
+Ahora deberá taggear cada imagen para subirlas al repositorio de su elección, en este caso usamos el repositorio docker hub.
 
 Para cada imagen de cada microservicio el nombre tiene que tener la siguiente estructura:
 
@@ -114,21 +114,33 @@ docker tag backend_eureka-server sebas1411/backend_eureka-server:v1
 
 ![image](img/tag.png)
 
-Este paso debera repertilo para cada imagen de cada microservicio.
+Este paso deberá repertilo para cada imagen de cada microservicio (backend_eureka-server, microservicios-empresa, microservicios-persona, microservicios-transacciones, microservicios-zuul).
 
 **Paso 3**
 
-Finalmente debe hacer push al repositorio de sus imagenes recientemente taggeadas. Para lo anterior debera ejecutar el comando:
+A continuación debe hacer push al repositorio de sus imágenes recientemente taggeadas. Para lo anterior deberá ejecutar el comando:
 
 ```
 docker login
 ```
-Ingrese sus credenciales y finalmente haga push de sus imagenes usando este comando:
+Ingrese sus credenciales y finalmente haga push de sus imágenes usando este comando:
 
 ```
 docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ```
 ![image](img/push.PNG)
+
+**Paso 4**
+Finalmente, deberá modificar el archivo **docker-compose-deploy.yml** que encontrará en la ruta ```Backend/deploy```.
+Para cada microservicio deberá cambiar la línea
+```
+image: 
+```
+
+En las secciones de lo smicroservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
+```
+spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/postgresql
+```
 
 ## Despliegue de los microservicios
 
