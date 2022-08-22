@@ -96,6 +96,57 @@ Con el fin de desplegar los microservicios usando la base de datos desplegada pr
 
 **Paso 1:** 
 
+Muevase a la carpeta **BackEnd/deploy** donde encontrara el archivo dockerfile el cual creara todas las imagenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
+
+```
+docker-compose up
+```
+
+Puede verificar que las imagenes se construyeron usando el siguiente comando 
+
+```
+docker images
+```
+O usando docker desktop:
+
+![image](img/docker.png)
+
+
+**Paso 2**
+
+Ahora debera taggear cada imagen para subirlas al repositorio de su elección, en este caso usamos el repositorio docker hub.
+
+Para cada imagen de cada microservicio el nombre tiene que tener la siguiente estructura:
+
+```
+<nombre de usuario docker>/<nombre_imagen_microservicio>:v1
+```
+
+Por ejemplo si deseamos taggear la imagen de backend_eureka-server debe ser de la siguiente manera:
+
+```
+docker tag backend_eureka-server sebas1411/backend_eureka-server:v1
+```
+
+![image](img/tag.png)
+
+Este paso debera repertilo para cada imagen de cada microservicio.
+
+**Paso 3**
+
+Finalmente debe hacer push al repositorio de sus imagenes recientemente taggeadas. Para lo anterior debera ejecutar el comando:
+
+```
+docker login
+```
+Ingrese sus credenciales y finalmente haga push de sus imagenes usando este comando:
+
+```
+docker push <usuario docker>/<nombre imagen microservicio>:<version>
+```
+![image](img/push.PNG)
+
+
 ## **Despliegue de Eureka**
 
 El servidor Eureka almacenará la información de todos los microservicios registrados así como su estado. Para su despliegue se hace uso de [OpenShift Do developer CLI (odo)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_developer_cli/understanding-odo.html) siguiendo los pasos descritos a continuación. 
@@ -232,7 +283,7 @@ Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer
 Seleccione la opción de *Image name from external registry* y en el campo de texto pegue la siguiente URL:
 
 ```
-sebas1411/front-roks:v1
+sebas1411/front-roks:v1    
 ```
 
 Cambie el *runtime icon* por el de node.js. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*.
