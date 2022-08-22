@@ -7,10 +7,10 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 ### Contenido
 
 1.  [Pre-requisitos](#Pre-Requisitos-pencil)
-2.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
+2.  [Crear un proyecto](#crear-un-proyecto-pagefacingup)
 3.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
-4.  [Creacion de las imágenes](#creación-de-las-imágenes)
-5.  [Despliegue de los microservicios](#des)
+4.  [Creación de las imágenes](#creación-de-las-imágenes)
+5.  [Despliegue de los microservicios](#despliegue-de-los-microservicios)
 6.  [Despliegue FrontEnd.](#despliegue-frontend)
 7.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
 8.  [Referencias.](#referencias)
