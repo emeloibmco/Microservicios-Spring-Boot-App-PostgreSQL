@@ -65,7 +65,7 @@ En este caso:
 oc expose service postgresql
 ```
 
-**Paso 5:** Obtenga la IP y el puerto en la cual fue expuesto el servicio, guárdela como \<IP\_Servicio>:<puerto>
+**Paso 5:** Obtenga la IP y el puerto en la cual fue expuesto el servicio, guárdela como \<IP\_Servicio>
 
 ```shell
 oc get svc
