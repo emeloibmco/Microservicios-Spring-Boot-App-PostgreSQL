@@ -7,14 +7,14 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 ### Contenido
 
 1.  [Pre-requisitos](#Pre-Requisitos-pencil)
-1.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
-2.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
-3.  [Creacion de las imágenes](#creación-de-las-imágenes)
-4.  [Despliegue de los microservicios](#des)
-5.  [Despliegue FrontEnd.](#despliegue-frontend)
-6.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
-7.  [Referencias.](#referencias)
-8.  [Autores.](#autores)
+2.  [Crear un proyecto.](#crear-un-proyecto-pagefacingup)
+3.  [Despliegue de la base de datos PostgreSQL.](#despliegue-de-la-base-de-datos-postgresql)
+4.  [Creacion de las imágenes](#creación-de-las-imágenes)
+5.  [Despliegue de los microservicios](#des)
+6.  [Despliegue FrontEnd.](#despliegue-frontend)
+7.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
+8.  [Referencias.](#referencias)
+9.  [Autores.](#autores)
 
 ## Pre-Requisitos :pencil:
 * Tener una cuenta en IBM Cloud
@@ -65,7 +65,7 @@ En este caso:
 oc expose service postgresql
 ```
 
-**Paso 5:** Obtenga la IP y el puerto en la cual fue expuesto el servicio, guárdela como \<IP\_Servicio>:
+**Paso 5:** Obtenga la IP y el puerto en la cual fue expuesto el servicio, guárdela como \<IP\_Servicio>:<puerto>
 
 ```shell
 oc get svc
@@ -73,23 +73,7 @@ oc get svc
 
 ![](https://user-images.githubusercontent.com/60897075/103159159-e7397880-4793-11eb-81b8-236b8c194053.gif)
 
-**Paso 6:** Clone el repositorio e ingrese al archivo **/src/main/resources/application.properties** de cada microservicio: empresa, persona y transacciones. 
 
-```shell
-git clone https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL.git
-```
-Para editar los archivos puede realizarlo desde el editor que desee o desde la consola, con el siguiente comando:
-```
-vim BackEnd/<nombre_microservicio>/src/main/resources/application.properties 
-```
-
-**Paso 7:** Modifique la variable **spring.datasource.url** de la siguiente forma y guarde los cambios.
-
-```
-spring.datasource.url=jdbc:postgresql://<IP_Servicio>:54593/db_microservices_app 
-```
-
-![](https://user-images.githubusercontent.com/60897075/103159233-f7058c80-4794-11eb-91be-02322a3e39dd.gif)
 
 ## **Creación de las imágenes**
 Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas y subirlas a un repositorio de docker.
