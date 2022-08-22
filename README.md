@@ -203,31 +203,44 @@ Diríjase a la carpeta FrontEnd, mediante el comando:
 ```
 cd FrontEnd
 ```
->**Nota:** Recuerde que se debe encontrar dentro de la carpeta **Microservicios-Spring-Boot-App-PostgreSQL**. Si aún se encuentra dentro de la carpeta **BackEnd** puede salir mediante el comando:
-```
-cd ..
-```
+>**Nota:** recuerde que este paso se debe realizar desde la terminal de su computadora
 
 **Paso 2:**
-Implementar la aplicación en OpenShift. Para ello ejecute el siguiente comando:
-```
-npx nodeshift --strictSSL=false --dockerImage=nodeshift/ubi8-s2i-web-app --imageTag=10.x --build.env YARN_ENABLED=true  --expose
-```
-Para mayor información puede consultar <a href="https://developers.redhat.com/blog/2018/10/04/modern-web-apps-openshift-part-1/"> Modern web applications on OpenShift: Part 1 — Web apps in two commands </a>
 
-Si los pasos anteriores no funcionaron puede usar el siguiente metodo para desplegar el frontend:
+Dirigase al siguiente fichero **src/services/Transaccion.js** y edite la constante ruta base usando el endpoint de backend_zuul-server que obtuvo en el paso anterior.
 
-**Paso 1:**
+![image](img/front.png)
+
+Cambie ese valor por el endpoint que obtuvo:
+
+![image](img/front2.png)
+
+
+**Paso 3:**
+
+Ahora debe hacer construir la imagen docker del frontend, taggearla y subirla al repositorio de su elección, en este caso, es docker hub.
+
+Ubiquese en la carpeta **FrontEnd** y ejecute los siguientes comandos:
+
+```
+docker build -t <nombre usuario docker>/front-roks:<version> .
+```
+
+Finalmente ejecute:
+```
+docker push <nombre usuario docker>/front-roks:<version>
+```
+**Paso 4:**
 Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer** y diríjase a la pestaña de *+add* y luego ingrese al apartado de **Container images**.
 
 ![deploy1](https://user-images.githubusercontent.com/53380760/180847794-21fd24c3-6ad1-411d-9fba-f679c734ef25.png)
 
-**Paso 2:**
+**Paso 5:**
 
-Seleccione la opción de *Image name from external registry* y en el campo de texto pegue la siguiente URL:
+Seleccione la opción de *Image name from external registry* y en el campo ingrese el nombre de su imagen (el paso anterior):
 
 ```
-sebas1411/front-roks:v1    
+<nombre usuario docker>/front-roks:<version>   
 ```
 
 Cambie el *runtime icon* por el de node.js. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*.
@@ -249,11 +262,14 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 
 **Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
 
+**Paso 3:** Busque en el proyecto en el que esta trabajando y seleccione el recurso **eureka-server** y de click en **Open URL** los microservicios deben estar registrados en el servidor de eureka como en esta imagen:
+![image](img/eureka.png)
+
 **Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
-<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Open%20URL.gif"></p>
+![image](img/front-roks.png)
 
 **Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación de forma similar a como se muestra en la siguiente imagen:
-<p align="center"><img width="700" src="https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL/blob/master/Aplicacion-microservicios.gif"></p>
+![image](img/transac.png)
 
 ## Referencias
 
