@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicios.app.transacciones.services.TransaccionService;
-import com.microservicios.commons.transacciones.models.entity.Transaccion;
+//import com.microservicios.commons.transacciones.models.entity.Transaccion;
+import com.microservicios.app.transacciones.entity.Transaccion;
 
 @RestController
 public class TransaccionController {
@@ -42,7 +43,7 @@ public class TransaccionController {
 	
 	
 	// Se envia la respuesta que se obtiene desde el body de entrada
-	@CrossOrigin(origins = "http://localhost:3000")
+	//@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping
 	public ResponseEntity<?> crear(@RequestBody Transaccion transaccion){
 		Transaccion transaccionDb = service.save(transaccion);

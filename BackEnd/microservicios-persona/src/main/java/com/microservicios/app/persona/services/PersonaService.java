@@ -1,9 +1,8 @@
 package com.microservicios.app.persona.services;
 
 import java.util.Optional;
-
-import com.microservicios.commons.transacciones.models.entity.Persona;
-
+//import com.microservicios.commons.transacciones.models.entity.Persona;
+import com.microservicios.app.persona.entity.Persona;
 
 
 public interface PersonaService {

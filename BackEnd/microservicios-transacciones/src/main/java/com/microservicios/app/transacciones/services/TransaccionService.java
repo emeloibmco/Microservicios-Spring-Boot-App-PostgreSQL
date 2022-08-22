@@ -2,7 +2,8 @@ package com.microservicios.app.transacciones.services;
 
 import java.util.Optional;
 
-import com.microservicios.commons.transacciones.models.entity.Transaccion;
+//import com.microservicios.commons.transacciones.models.entity.Transaccion;
+import com.microservicios.app.transacciones.entity.Transaccion;
 
 public interface TransaccionService {
 	

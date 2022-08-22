@@ -1,0 +1,55 @@
+version: '2'
+
+services:
+  eureka-server:
+    image: <usuario docker>/backend_eureka-server:<version>
+    ports:
+      - "8761:8761"
+
+  zuul-server:
+    image: <usuario docker>/zuul-server:<version>
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+  microservicio-empresa:
+    image: <usuario docker>/microservicio-empresa:<version> 
+    ports:
+      - "8890:8890"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+      spring.datasource.url: jdbc:postgresql://<ip postgres>:5432/sampledb
+      spring.datasource.username: postgresadmin
+      spring.datasource.password: Passw0rd2020 
+
+  microservicio-persona:
+    image: <usuario docker>/microservicio-persona:<version>
+    ports:
+      - "8060:8060"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+      spring.datasource.url: jdbc:postgresql://<ip postgres>/sampledb
+      spring.datasource.username: postgresadmin
+      spring.datasource.password: Passw0rd2020
+
+  microservicio-transaccion:
+    image: <usuario docker>/microservicio-transaccion:<version>
+    ports:
+      - "8020:8020"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+      spring.datasource.url: jdbc:postgresql://<ip postgres>:5432/sampledb
+      spring.datasource.username: postgresadmin
+      spring.datasource.password: Passw0rd2020

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicios.app.empresa.services.EmpresaService;
-import com.microservicios.commons.transacciones.models.entity.Empresa;
+//import com.microservicios.commons.transacciones.models.entity.Empresa;
 
-
+import com.microservicios.app.empresa.entity.Empresa;
 
 @RestController
 public class EmpresaController {
@@ -43,6 +43,7 @@ public class EmpresaController {
 	// Se envia la respuesta que se obtiene desde el body de entrada
 	@PostMapping
 	public ResponseEntity<?> crear(@RequestBody Empresa empresa){
+		
 		Empresa empresaDb = service.save(empresa);
 		return ResponseEntity.status(HttpStatus.CREATED).body(empresaDb);
 	}

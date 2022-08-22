@@ -20,17 +20,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.microservicios.app.commons</groupId>
-			<artifactId>commos-transacciones-main</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.microservicios.app.transacciones</groupId>
-			<artifactId>microservicios-transacciones</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -43,6 +32,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>3.1.3</version>
 		</dependency>
 
 		<dependency>

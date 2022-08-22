@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.microservicios.app.persona.entity.Persona;
 import com.microservicios.app.persona.models.repository.PersonaRepository;
-import com.microservicios.commons.transacciones.models.entity.Persona;
+//import com.microservicios.commons.transacciones.models.entity.Persona;
 
 @Service
 public class PersonaServiceImpl implements PersonaService{

@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  eureka-server:
+    build: ./eurekaserver
+    ports:
+      - "8761:8761"
+
+  zuul-server:
+    build: ./microservicios-zuul
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+  microservicio-empresa:
+    build: ./microservicios-empresa
+    ports:
+      - "8890:8890"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+
+  microservicio-persona:
+    build: ./microservicios-persona
+    ports:
+      - "8060:8060"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+  microservicio-transaccion:
+    build: ./microservicios-transacciones
+    ports:
+      - "8020:8020"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka

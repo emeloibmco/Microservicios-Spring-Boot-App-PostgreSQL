@@ -11,9 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.microservicios.app.transacciones.models.repository.EmpresaRepository;
 import com.microservicios.app.transacciones.models.repository.PersonaRepository;
 import com.microservicios.app.transacciones.models.repository.TransaccionRepository;
-import com.microservicios.commons.transacciones.models.entity.Empresa;
+/*import com.microservicios.commons.transacciones.models.entity.Empresa;
 import com.microservicios.commons.transacciones.models.entity.Persona;
-import com.microservicios.commons.transacciones.models.entity.Transaccion;
+import com.microservicios.commons.transacciones.models.entity.Transaccion;*/
+
+
+import com.microservicios.app.transacciones.entity.Transaccion;
+import com.microservicios.app.transacciones.entity.Persona;
+import com.microservicios.app.transacciones.entity.Empresa;
 
 
 @Service

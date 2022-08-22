@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.microservicios.app.empresa.models.repository.EmpresaRepository;
-import com.microservicios.commons.transacciones.models.entity.Empresa;
+//import com.microservicios.commons.transacciones.models.entity.Empresa;
+import com.microservicios.app.empresa.entity.Empresa;
 
 @Service
 public class EmpresaServiceImpl implements EmpresaService{

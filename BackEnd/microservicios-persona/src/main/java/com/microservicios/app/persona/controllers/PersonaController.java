@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicios.app.persona.services.PersonaService;
-import com.microservicios.commons.transacciones.models.entity.Persona;
-
-
+import com.microservicios.app.persona.entity.Persona;
+//mport com.microservicios.commons.transacciones.models.entity.Persona;
 
 @RestController
 public class PersonaController {
