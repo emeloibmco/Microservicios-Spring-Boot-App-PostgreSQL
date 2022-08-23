@@ -45,7 +45,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 
 **Paso 3:** Ingrese a la IBM Cloud Shell dando clic en el ícono de **IBM Cloud Shell** desde su cuenta o mediante el [link.](https://cloud.ibm.com/shell). 
 
-Inicie sesión en el clúster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha.
+Inicie sesión en el clúster con el comando ```Copy login command``` que puede encontrar al dar clic en su nombre de usuario en la esquina superior derecha de la consola de OpenShift.
 
 Ingrese al proyecto que creó con el siguiente comando:
 
@@ -78,11 +78,11 @@ oc get svc
 
 
 ## **Creación de las imágenes**
-Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas y subirlas a un repositorio de docker.
+Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas localmente y subirlas a un repositorio de docker.
 
 **Paso 1:** 
 
-Muevase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
+En la terminal de su computador, muévase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
 
 ```
 docker-compose up
