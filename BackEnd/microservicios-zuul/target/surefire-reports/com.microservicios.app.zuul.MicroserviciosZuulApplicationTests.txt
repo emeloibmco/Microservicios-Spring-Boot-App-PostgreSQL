@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.microservicios.app.zuul.MicroserviciosZuulApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.172 s - in com.microservicios.app.zuul.MicroserviciosZuulApplicationTests

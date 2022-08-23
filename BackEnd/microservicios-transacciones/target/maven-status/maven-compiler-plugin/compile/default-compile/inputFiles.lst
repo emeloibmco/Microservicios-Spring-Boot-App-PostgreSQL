@@ -1,0 +1,10 @@
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\MicroserviciosTransaccionesApplication.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\entity\Persona.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\services\TransaccionServiceImpl.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\models\repository\PersonaRepository.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\models\repository\EmpresaRepository.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\entity\Transaccion.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\entity\Empresa.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\controllers\TransaccionController.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\models\repository\TransaccionRepository.java
+F:\Java_workspace\Workspace\BackEnd\microservicios-transacciones\src\main\java\com\microservicios\app\transacciones\services\TransaccionService.java

@@ -1,0 +1,8 @@
+com\microservicios\app\persona\controllers\PersonaController.class
+com\microservicios\app\persona\entity\Transaccion.class
+com\microservicios\app\persona\models\repository\PersonaRepository.class
+com\microservicios\app\persona\services\PersonaServiceImpl.class
+com\microservicios\app\persona\entity\Empresa.class
+com\microservicios\app\persona\entity\Persona.class
+com\microservicios\app\persona\MicroserviciosPersonaApplication.class
+com\microservicios\app\persona\services\PersonaService.class
