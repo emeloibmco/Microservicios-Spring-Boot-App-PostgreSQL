@@ -82,7 +82,7 @@ Con el fin de desplegar los microservicios usando la base de datos desplegada pr
 
 **Paso 1:** 
 
-En la terminal de su computador, muévase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
+En la terminal de su computador, muévase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego ejecute el siguiente comando:
 
 ```
 docker-compose up
@@ -116,7 +116,7 @@ docker tag backend_eureka-server sebas1411/backend_eureka-server:v1
 
 ![image](img/tag.png)
 
-Este paso deberá repertilo para cada imagen de cada microservicio (backend_eureka-server, microservicios-empresa, microservicios-persona, microservicios-transacciones, microservicios-zuul).
+Este paso deberá repertilo para cada imagen de cada microservicio (backend_eureka-server, backend_microservicio-empresa, backend_microservicio-persona, backend_microservicio-transaccion, backend_zuul-server).
 
 **Paso 3**
 
