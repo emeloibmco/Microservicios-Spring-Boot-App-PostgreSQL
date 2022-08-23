@@ -78,11 +78,11 @@ oc get svc
 
 
 ## **Creación de las imágenes**
-Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas y subirlas a un repositorio de docker.
+Con el fin de desplegar los microservicios usando la base de datos desplegada previamente, es necesario crear las imágenes respectivas localmente y subirlas a un repositorio de docker.
 
 **Paso 1:** 
 
-Muevase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
+En la terminal de su computador, muévase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego en la consola ejecute el siguiente comando:
 
 ```
 docker-compose up
