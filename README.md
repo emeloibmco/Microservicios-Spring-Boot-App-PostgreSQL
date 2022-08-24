@@ -13,8 +13,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 5.  [Despliegue de los microservicios](#despliegue-de-los-microservicios)
 6.  [Despliegue FrontEnd.](#despliegue-frontend)
 7.  [Prueba de funcionamiento.](#prueba-de-funcionamiento)
-8.  [Referencias.](#referencias)
-9.  [Autores.](#autores)
+8.  [Autores.](#autores)
 
 ## Pre-Requisitos :pencil:
 * Tener una cuenta en IBM Cloud
@@ -132,6 +131,10 @@ docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ```
 ![image](img/push.PNG)
 
+Luego de esto, si lo desea, podrá desplegar los microservicios de manera local para verificar su adecuado funcionamiento. Para esto ingrese a Docker Desktop y en la sección **containers** dé click en ```start``` para el contenedor backend. Luego de esto abra la lista desplegable y dé click en ```open in browser``` en el servicio de eureka. Debería poder ver una lista con los 4 microservicios desplegados.
+
+![image](img/local.png)
+
 **Paso 4**
 
 Finalmente, deberá modificar el archivo **docker-compose-deploy.yml** que encontrará en la ruta ```Backend/deploy```.
@@ -147,18 +150,18 @@ spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/postgresql
 
 Para generar los archivos ```.yml``` con los cuales se realizará el despliegue en openshift se usará la herramienta **kompose**. Asegúrese de estar en la carpeta ```Backend/deploy``` y escriba el siguiente comando:
 ```
-kompose --provider openshift --file docker-compose
+kompose --provider openshift --file docker-compose-deploy.yml convert
 ```
 
-Este comando creará 3 archivos ```.yml``` por cada microservicio, los cuales corresponden a imagen, deployment y servicio. Estos archivos serán los que se usen en el siguiente paso para realizar el despliegue.
+Este comando creará 3 archivos ```.yml``` por cada microservicio, los cuales corresponden a imagen, deployment y servicio. Estos archivos serán los que se usen en el siguiente paso para realizar el despliegue, por ello deberá subirlos a un repositorio en Github que se usará en el siguiente apartado.
 
 ## Despliegue de los microservicios
 
-Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **eureka-server**, luego **microservicios-empresa,** luego para **microservicios-persona,** posteriormente en **microservicios-transacciones** , en **microservicios-zuul**.
+Los pasos a continuación son iguales para todos los microservicios y se aplican primero para **eureka-server**, luego **microservicio-empresa,** luego para **microservicio-persona,** posteriormente en **microservicio-transaccion** y finalmente en **-zuul-server**.
 
 **Paso 1**
 
-Ingrese a su proyecto de OpenShift a través de IBM Cloud Shell. 
+Ingrese a su proyecto de OpenShift a través de IBM Cloud Shell. Clone el repositorio donde tiene los archivos yml previamente generados con kompose.
 
 **Paso 2**
 
@@ -207,7 +210,7 @@ cd FrontEnd
 
 **Paso 2:**
 
-Dirigase al siguiente fichero **src/services/Transaccion.js** y edite la constante ruta base usando el endpoint de backend_zuul-server que obtuvo en el paso anterior.
+Diríjase al siguiente fichero **src/services/Transaccion.js** y edite la constante ruta base usando el endpoint de backend_zuul-server que obtuvo en el paso anterior.
 
 ![image](img/front.png)
 
@@ -218,9 +221,9 @@ Cambie ese valor por el endpoint que obtuvo:
 
 **Paso 3:**
 
-Ahora debe hacer construir la imagen docker del frontend, taggearla y subirla al repositorio de su elección, en este caso, es docker hub.
+Ahora debe hacer construir la imagen docker del frontend, taggearla y subirla al repositorio de su elección, en este caso es docker hub.
 
-Ubiquese en la carpeta **FrontEnd** y ejecute los siguientes comandos:
+Ubíquese en la carpeta **FrontEnd** y ejecute los siguientes comandos:
 
 ```
 docker build -t <nombre usuario docker>/front-roks:<version> .
@@ -231,7 +234,7 @@ Finalmente ejecute:
 docker push <nombre usuario docker>/front-roks:<version>
 ```
 **Paso 4:**
-Entre al clúster de OpenShift y asegurese de que estar en el rol de **Developer** y diríjase a la pestaña de *+add* y luego ingrese al apartado de **Container images**.
+Entre al clúster de OpenShift y asegúrese de que estar en el rol de **Developer**. Diríjase a la pestaña de *+add* y luego ingrese al apartado de **Container images**.
 
 ![deploy1](https://user-images.githubusercontent.com/53380760/180847794-21fd24c3-6ad1-411d-9fba-f679c734ef25.png)
 
@@ -243,7 +246,7 @@ Seleccione la opción de *Image name from external registry* y en el campo ingre
 <nombre usuario docker>/front-roks:<version>   
 ```
 
-Cambie el *runtime icon* por el de node.js. Por ultimo en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*.
+Cambie el *runtime icon* por el de node.js. Por último, en el campo *Name* asigne un nombre para distinguir el componente y sus recursos asociados. En este caso el nombre será: *frontend-microservice*.
 
 ![deploy2](https://user-images.githubusercontent.com/53380760/180848649-5d573107-171c-4c75-8a03-fd2d1e994a46.png)
 
@@ -262,18 +265,15 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 
 **Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
 
-**Paso 3:** Busque en el proyecto en el que esta trabajando y seleccione el recurso **eureka-server** y de click en **Open URL** los microservicios deben estar registrados en el servidor de eureka como en esta imagen:
+**Paso 3:** Busque en el proyecto en el que esta trabajando y seleccione el recurso **eureka-server** y dé click en **Open URL** los microservicios deben estar registrados en el servidor de eureka como en esta imagen:
 ![image](img/eureka.png)
 
-**Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el realizó la implementación del FrontEnd y de click en **Open URL**.
+**Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el realizó la implementación del FrontEnd y dé click en **Open URL**.
 ![image](img/front-roks.png)
 
 **Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación de forma similar a como se muestra en la siguiente imagen:
 ![image](img/transac.png)
 
-## Referencias
-
-La documentación sobre odo puede encontrarla en la página de [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_developer_cli/understanding-odo.html).
 
 ## Autores
 
