@@ -39,6 +39,7 @@ En la presente guía encontrará el paso a paso y las herramientas necesarias pa
 *   **Database Service Name:** postgresql
 *   **PostgreSQL Connection Username:** postgresadmin
 *   **PostgreSQL Connection Password:** Passw0rd2020
+*   **PostgreSQL Database Name:** sampledb
 
 ![](https://user-images.githubusercontent.com/60897075/103158986-f61f2b80-4791-11eb-9e32-ff73de7c2fd3.gif)
 
@@ -131,7 +132,7 @@ docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ```
 ![image](img/push.PNG)
 
-Luego de esto, si lo desea, podrá desplegar los microservicios de manera local para verificar su adecuado funcionamiento. Para esto ingrese a Docker Desktop y en la sección **containers** dé click en ```start``` para el contenedor backend. Luego de esto abra la lista desplegable y dé click en ```open in browser``` en el servicio de eureka. Debería poder ver una lista con los 4 microservicios desplegados.
+Luego de esto, si lo desea, podrá ejecutar los microservicios de manera local para verificar su adecuado funcionamiento. Para esto ingrese a Docker Desktop y en la sección **containers** dé click en ```start``` para el contenedor **backend**. Luego de esto abra la lista desplegable y dé click en ```open in browser``` en el servicio de eureka. Debería poder ver una lista con los 4 microservicios desplegados.
 
 ![image](img/local.png)
 
@@ -143,9 +144,11 @@ Para cada microservicio deberá cambiar la línea
 image: <usuario docker>/backend_eureka-server:<version>
 ```
 
+Tenga en cuenta que el nombre de cada imagen debe ser el mismo que registró en su repositorio de DockerHub.
+
 En las secciones de los microservicios **microservicio-empresa**, **microservicio-persona** y **microservicio-transaccion** agregue la IP de su servicio de base de datos en el atributo ```spring.datasource.url```
 ```
-spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/postgresql
+spring.datasource.url: jdbc:postgresql://<IP_servicio>:5432/sampledb
 ```
 
 Para generar los archivos ```.yml``` con los cuales se realizará el despliegue en openshift se usará la herramienta **kompose**. Asegúrese de estar en la carpeta ```Backend/deploy``` y escriba el siguiente comando:
@@ -161,7 +164,7 @@ Los pasos a continuación son iguales para todos los microservicios y se aplican
 
 **Paso 1**
 
-Ingrese a su proyecto de OpenShift a través de IBM Cloud Shell. Clone el repositorio donde tiene los archivos yml previamente generados con kompose.
+Ingrese a su proyecto de OpenShift a través de IBM Cloud Shell. Clone el repositorio donde tiene los archivos ```.yml``` previamente generados con kompose e ingrese a la carpeta ```Backend/deploy```.
 
 **Paso 2**
 
@@ -206,7 +209,7 @@ Diríjase a la carpeta FrontEnd, mediante el comando:
 ```
 cd FrontEnd
 ```
->**Nota:** recuerde que este paso se debe realizar desde la terminal de su computadora
+>**Nota:** recuerde que este paso se debe realizar desde la terminal de su computador
 
 **Paso 2:**
 
@@ -216,12 +219,17 @@ Diríjase al siguiente fichero **src/services/Transaccion.js** y edite la consta
 
 Cambie ese valor por el endpoint que obtuvo:
 
+```
+const rutabase = "<endpoint_zuul>/api/transacciones"
+```
+
+
 ![image](img/front2.png)
 
 
 **Paso 3:**
 
-Ahora debe hacer construir la imagen docker del frontend, taggearla y subirla al repositorio de su elección, en este caso es docker hub.
+Ahora debe construir la imagen docker del frontend, taggearla y subirla al repositorio de su elección, en este caso es docker hub.
 
 Ubíquese en la carpeta **FrontEnd** y ejecute los siguientes comandos:
 
@@ -255,7 +263,7 @@ Click en el botón *Create* y el despliegue empezará de manera automática.
 
 ![deploy3](https://user-images.githubusercontent.com/53380760/180847886-493f3fae-f143-4c82-8e10-7b6d57b1d50a.png)
 
-**Nota:** Las opciones de configuración que no se mencionan en este apartado no necesitan ser modificadas.
+>**Nota:** Las opciones de configuración que no se mencionan en este apartado no necesitan ser modificadas.
 
 
 ## Prueba de funcionamiento
@@ -263,12 +271,12 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 
 **Paso 1:** Entre al clúster de OpenShift y abra la **Consola web de OpenShift**.
 
-**Paso 2:** Asegurese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
+**Paso 2:** Asegúrese de tener seleccionado el rol de **Developer** y posteriormente diríjase a la pestaña de *Topology*.
 
 **Paso 3:** Busque en el proyecto en el que esta trabajando y seleccione el recurso **eureka-server** y dé click en **Open URL** los microservicios deben estar registrados en el servidor de eureka como en esta imagen:
 ![image](img/eureka.png)
 
-**Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el realizó la implementación del FrontEnd y dé click en **Open URL**.
+**Paso 3:** Busque el proyecto en el cual está trabajando, seleccione el recurso **node.js** sobre el que realizó la implementación del FrontEnd y dé click en **Open URL**.
 ![image](img/front-roks.png)
 
 **Paso 4:** Si realizó todos los pasos correctamente debe observar la aplicación de forma similar a como se muestra en la siguiente imagen:
@@ -277,4 +285,4 @@ Para verificar el funcionamiento de la aplicación realice los siguientes pasos:
 
 ## Autores
 
-IBM Cloud Tech Sales :cloud:
+Equipo IBM Cloud Tech Sales Colombia :cloud:
