@@ -82,6 +82,15 @@ Con el fin de desplegar los microservicios usando la base de datos desplegada pr
 
 **Paso 1:** 
 
+Clone este repositorio en su computador para trbajar de forma local. Si tiene el CLI de Git puede usar el siguiente comando en su máquina:
+```
+git clone https://github.com/emeloibmco/Microservicios-Spring-Boot-App-PostgreSQL.git
+```
+
+O puede lo puede descargar en el botón verde **Code** al comienzo del repositorio.
+
+<img src="img/clone-git.png" width= "35%">
+
 En la terminal de su computador, muévase a la carpeta **BackEnd** donde encontrará el archivo ```docker-compose.yml```, el cual creará todas las imágenes configuradas para el despliegue, luego ejecute el siguiente comando:
 
 ```
@@ -118,6 +127,15 @@ docker tag backend_eureka-server sebas1411/backend_eureka-server:v1
 
 Este paso deberá repertilo para cada imagen de cada microservicio (backend_eureka-server, backend_microservicio-empresa, backend_microservicio-persona, backend_microservicio-transaccion, backend_zuul-server).
 
+```
+docker tag backend-eureka-server <docker user>/backend-eureka-server:v1
+docker tag backend-backend-zuul-server <docker user>/backend-zuul-server:v1
+docker tag backend-microservicio-persona <docker user>/backend-microservicio-persona:v1
+docker tag backend-microservicio-empresa <docker user>/backend-microservicio-empresa:v1
+docker tag backend-microservicio-transaccion <docker user>/backend-microservicio-transaccion:v1
+```
+>**Nota:** Cambie el texto de las etiquetas por su usuario de docker.
+
 **Paso 3**
 
 A continuación debe hacer push al repositorio de sus imágenes recientemente taggeadas. Para lo anterior deberá ejecutar el comando:
@@ -131,10 +149,17 @@ Ingrese sus credenciales y finalmente haga push de sus imágenes usando este com
 docker push <usuario docker>/<nombre imagen microservicio>:<version>
 ```
 ![image](img/push.PNG)
+```
+docker push <docker user>/backend-microservicio-persona:v1
+docker push <docker user>/backend-microservicio-empresa:v1
+docker push <docker user>/backend-microservicio-transaccion:v1
+docker push <docker user>/backend-eureka-server:v1
+docker push <docker user>/backend-zuul-server:v1
+```
 
-Luego de esto, si lo desea, podrá ejecutar los microservicios de manera local para verificar su adecuado funcionamiento. Para esto ingrese a Docker Desktop y en la sección **containers** dé click en ```start``` para el contenedor **backend**. Luego de esto abra la lista desplegable y dé click en ```open in browser``` en el servicio de eureka. Debería poder ver una lista con los 4 microservicios desplegados.
+<!-- Luego de esto, si lo desea, podrá ejecutar los microservicios de manera local para verificar su adecuado funcionamiento. Para esto ingrese a Docker Desktop y en la sección **containers** dé click en ```start``` para el contenedor **backend**. Luego de esto abra la lista desplegable y dé click en ```open in browser``` en el servicio de eureka. Debería poder ver una lista con los 4 microservicios desplegados.
 
-![image](img/local.png)
+![image](img/local.png) -->
 
 **Paso 4**
 
@@ -258,7 +283,7 @@ Cambie el *runtime icon* por el de node.js. Por último, en el campo *Name* asig
 
 ![deploy2](https://user-images.githubusercontent.com/53380760/180848649-5d573107-171c-4c75-8a03-fd2d1e994a46.png)
 
-
+**Importante:** En "Configuraciones avanzadas", desactive la casilla ``Secure Route``
 Click en el botón *Create* y el despliegue empezará de manera automática.
 
 ![deploy3](https://user-images.githubusercontent.com/53380760/180847886-493f3fae-f143-4c82-8e10-7b6d57b1d50a.png)
