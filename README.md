@@ -134,7 +134,7 @@ docker tag backend-microservicio-persona <docker user>/backend-microservicio-per
 docker tag backend-microservicio-empresa <docker user>/backend-microservicio-empresa:v1
 docker tag backend-microservicio-transaccion <docker user>/backend-microservicio-transaccion:v1
 ```
->**Nota:** Cambie el texto de las etiquetas por su usuario de docker.
+>**Nota:** Cambie el texto de las etiquetas ``docerk user`` por su usuario de docker.
 
 **Paso 3**
 
@@ -205,6 +205,29 @@ oc apply -f <microservicio>-deploymentconfig.yaml
 
 ```
 oc apply -f <microservicio>-service.yaml
+```
+A continuación se muestra los comandos que debería ejecutar en el orden de los servicios y de los ``.yaml`` que se deben cargar.
+```
+oc apply -f eureka-server-imagestream.yaml
+oc apply -f eureka-server-deploymentconfig.yaml
+oc apply -f eureka-server-service.yaml
+
+oc apply -f microservicio-empresa-imagestream.yaml
+oc apply -f microservicio-empresa-deploymentconfig.yaml
+oc apply -f microservicio-empresa-service.yaml
+
+oc apply -f microservicio-persona-imagestream.yaml
+oc apply -f microservicio-persona-deploymentconfig.yaml
+oc apply -f microservicio-persona-service.yaml
+
+oc apply -f microservicio-transaccion-imagestream.yaml
+oc apply -f microservicio-transaccion-deploymentconfig.yaml
+oc apply -f microservicio-transaccion-service.yaml
+
+oc apply -f zuul-server-imagestream.yaml
+oc apply -f zuul-server-deploymentconfig.yaml
+oc apply -f zuul-server-service.yaml
+
 ```
 
 Verifique que se hayan realizado los despliegues correctamente con el comando
